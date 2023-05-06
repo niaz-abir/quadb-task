@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 const MovieDetailsCard = () => {
   const [movieCard, setMovieCard] = useState();
@@ -18,8 +18,22 @@ const MovieDetailsCard = () => {
     const name = form.name.value;
     const email = form.email.value;
     const movie = form.movie.value;
-    console.log(email, name, movie);
+
+    const newBooking = {
+      email,
+      name,
+      movie,
+    };
+    console.log(newBooking);
+
+    const bookedShows = JSON.parse(
+      localStorage.getItem("bookedTvShows") || "[]"
+    );
+
+    localStorage?.setItem("bookedTvShows", JSON.stringify(newBooking));
+    form.reset();
   };
+
   return (
     <div className="flex justify-center pt-8 pb-16 text-white">
       {/* <h1>status:{movieCard?.averageRuntime}</h1> */}
@@ -55,7 +69,7 @@ const MovieDetailsCard = () => {
               htmlFor="my-modal-3"
               className="btn bg-green-600  hover:bg-transparent text-white hover:text-green-600 font-bold py-2 px-4 rounded transition duration-300 mt-2"
             >
-              open modal
+              Book Now
             </label>
 
             {/* Put this part before </body> tag */}
@@ -96,10 +110,11 @@ const MovieDetailsCard = () => {
                     <input
                       type="text"
                       name="movie"
-                      placeholder="Movie"
+                      placeholder="movie"
                       className="input input-bordered rounded-none w-full max-w-xs mb-4"
                     />
                   </div>
+
                   <button className="btn bg-green-600  hover:bg-transparent text-white hover:text-green-600 font-bold py-2 px-4 rounded transition duration-300 mt-6">
                     Submit
                   </button>

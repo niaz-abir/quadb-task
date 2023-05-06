@@ -16,8 +16,8 @@ const MovieDetails = ({ details }) => {
           <div className="card-body text-white">
             <h2 className="card-title text-green-600">{details?.show.name}</h2>
             <div className="flex flex-row gap-4">
-              <h2>{details?.show.language}</h2>
-              <h2>{details?.show.genres[0]}</h2>
+              <h2>Language: {details?.show.language}</h2>
+              <h2>Genres: {details?.show.genres[0]}</h2>
             </div>
             <div className="flex flex-row gap-4">
               <h2>Runtime : {details?.show.runtime}</h2>
