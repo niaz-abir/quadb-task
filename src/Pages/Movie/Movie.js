@@ -18,7 +18,7 @@ const Movie = () => {
         <h2>All Movie:</h2>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-14 mt-8 ml-2 lg:ml-8 mr-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-14 mt-8 ml-2 lg:ml-8 mr-4">
         {allMovie?.map((details) => (
           <MovieDetails details={details} key={details?.id}></MovieDetails>
         ))}
